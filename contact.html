@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <title>Contact</title>
+    <!-- --------------------------------CSS--------------------->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(19, 19, 19);
+
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            /* 2rem for small screen 5rem for large use at media query to change size of text scroll*/
+            font-family: sans-serif;
+            text-align: center;
+            line-height: 100vh;
+            /* aligns text to center of the page!*/
+        }
+            
+
+        p {
+            color: white;
+            font-size: 2rem;
+            /* 2rem for small screen 5rem for large use at media query to change size of text scroll*/
+            font-family: sans-serif;
+            text-align: center;
+       
+            /* aligns text to center of the page!*/
+        }
+
+        span {
+            opacity: 0;
+
+            /* affect that types one at a time*/
+
+        }
+
+        span.fade {
+            opacity: 1;
+
+
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .topnav a {
+            float: left;
+            color: #363434;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: rgb(156, 153, 153);
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+
+        
+        @media all and (max-width:768px) {
+           h1 {
+              font-size: 24px;
+              text-align: center;
+         
+
+            }
+               p {
+              font-size: 24px;
+              text-align: center;
+         
+
+            }
+
+
+        }
+
+        @media all and (max-width:1024px) {
+          body {
+                max-width: 900px;
+                max-width: 900px;
+
+            }
+
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <nav class="topnav">
+        <a class="index" href="index.html">iNesso</a>
+
+        <a class="project" href="project.html">Project</a>
+
+        <a href="#contact">Contact</a>
+
+
+
+
+    </nav>
+
+<div >
+    <h1 class="fancy">Integrative Web Design</h1>
+    <p>#thefutureofwebdesign</p>
+
+</div>
+
+   
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+
+    <script> //<--JS and jQuery-->
+        const text = document.querySelector(".fancy"); //selected class.
+        const strText = text.textContent; //This is giving the contens of the class selected, so iNess...ect
+        const splitText = strText.split(""); //split is a method.
+        text.textContent = ""; // this stops h1 from repeating.
+
+
+
+        for (let i = 0; i < splitText.length; i++) {
+            text.innerHTML += "<span>" + splitText[i] + "</span>" //each letter is split and span tags are added. 
+
+        }
+
+        let char = 0; //start time
+        let timer = setInterval(onTick, 100); //milliseconds
+
+
+        function onTick() {
+            const span = text.querySelectorAll("span")[char];
+            span.classList.add("fade"); // this is going to add the class fade to each span or letter starting at [char]
+            char++
+            if (char === splitText.length) {
+                complete(); // function is called here from below.
+                return;
+            }
+        }
+
+        function complete() {
+            clearInterval(timer); //clearInterval is a JS method to stop time.
+            timer = null;
+        }
+    </script> 
+
+</body>
+</html>
